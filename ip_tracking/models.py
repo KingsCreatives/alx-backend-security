@@ -12,3 +12,16 @@ class RequestLog(models.Model):
 
     def __str__(self):
         return f"{self.ip_address} accessed {self.path} at {self.timestamp.strftime('%Y-%m-%d %H:%M:%S')}"
+
+
+class BlockedIP(models.Model):
+    ip_address = models.GenericIPAddressField(
+        verbose_name="Blocked IP Address",
+        null=True,
+        blank=True
+    )
+
+    def __str__(self):
+        return self.ip_address
+    class Meta:
+        verbose_name_plural = "Blocked IPs"
