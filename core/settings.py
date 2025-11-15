@@ -50,6 +50,14 @@ MIDDLEWARE = [
     'ip_tracking.middleware.IPLoggingMiddleware',
 ]
 
+RATELIMIT_DEFAULT_VAR = 'ip'
+RATELIMIT_KEY_PREFIX = 'rl'
+
+RATE_LIMITS = {
+    'auth' : '10/m',
+    'anon' : '5/m'
+}
+
 ROOT_URLCONF = 'core.urls'
 
 TEMPLATES = [
