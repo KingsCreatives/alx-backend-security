@@ -27,3 +27,14 @@ class BlockedIP(models.Model):
         return self.ip_address
     class Meta:
         verbose_name_plural = "Blocked IPs"
+
+class SuspiciousIP(models.Model):
+    ip_address = models.GenericIPAddressField(
+        verbose_name="Suspicious IP Address",
+        unique=True
+    )
+    reason = models.TextField(verbose_name="Reason for Flagging")
+    flagged_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.ip_address}: {self.reason[:50]}"
